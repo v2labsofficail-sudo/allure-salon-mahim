@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { MessageSquare } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface FeaturedService {
   title: string;
@@ -51,48 +52,22 @@ export default function FeaturedServicesCarousel() {
     }
   ];
 
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeDot, setActiveDot] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Mouse drag state variables for desktop/simulated swipe
-  const isDown = useRef(false);
-  const startX = useRef(0);
-  const scrollLeftVal = useRef(0);
+  // We set a fixed responsive card width plus gap (300px card + 24px gap = 324px step width)
+  const stepWidth = 324;
 
-  // Monitor scroll to update the active dot indicator
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 300;
-      const gap = 24; // gap-6 matches 24px in Tailwind
-      const index = Math.round(scrollLeft / (cardWidth + gap));
-      setActiveDot(index);
+  const handleDragEnd = (event: any, info: any) => {
+    const swipeThreshold = 50;
+    const swipeOffset = info.offset.x;
+
+    if (swipeOffset < -swipeThreshold && currentIndex < featuredServices.length - 1) {
+      // Swiped left -> show next card
+      setCurrentIndex((prev) => prev + 1);
+    } else if (swipeOffset > swipeThreshold && currentIndex > 0) {
+      // Swiped right -> show previous card
+      setCurrentIndex((prev) => prev - 1);
     }
-  };
-
-  // Mouse Drag Event Handlers
-  const handleMouseDown = (e: React.MouseEvent) => {
-    isDown.current = true;
-    if (scrollRef.current) {
-      startX.current = e.pageX - scrollRef.current.offsetLeft;
-      scrollLeftVal.current = scrollRef.current.scrollLeft;
-    }
-  };
-
-  const handleMouseLeave = () => {
-    isDown.current = false;
-  };
-
-  const handleMouseUp = () => {
-    isDown.current = false;
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDown.current || !scrollRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1.5; // Adjust drag speed
-    scrollRef.current.scrollLeft = scrollLeftVal.current - walk;
   };
 
   return (
@@ -110,78 +85,74 @@ export default function FeaturedServicesCarousel() {
           </div>
         </div>
 
-        {/* Carousel Container with Scroll Snap & Drag/Swipe Capabilities */}
-        <div
-          ref={scrollRef}
-          onScroll={handleScroll}
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          className="flex flex-row flex-nowrap overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden pb-6 -mx-6 px-6 lg:mx-0 lg:px-0 cursor-grab active:cursor-grabbing select-none"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {featuredServices.map((service, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-border-custom group flex flex-col h-auto w-[80vw] sm:w-[45vw] lg:w-[calc(33.333%-16px)] shrink-0 snap-start relative"
-            >
-              {/* Image Section */}
-              <div className="relative w-full h-[240px] md:h-[280px] overflow-hidden pointer-events-none">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  sizes="(max-width: 768px) 80vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-charcoal/10" />
-                <span className="absolute top-4 left-4 bg-white/95 px-3 py-1 font-sans text-[10px] font-bold tracking-widest uppercase text-rose-gold-dark border border-rose-gold/20">
-                  {service.category}
-                </span>
-              </div>
+        {/* Outer view mask */}
+        <div className="relative w-full overflow-hidden -mx-6 px-6 lg:mx-0 lg:px-0">
+          {/* Framer Motion Draggable Row */}
+          <motion.div
+            drag="x"
+            dragElastic={0.2}
+            dragConstraints={{
+              left: -((featuredServices.length - 1) * stepWidth),
+              right: 0
+            }}
+            onDragEnd={handleDragEnd}
+            animate={{ x: -(currentIndex * stepWidth) }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="flex flex-row flex-nowrap gap-6 cursor-grab active:cursor-grabbing w-fit"
+          >
+            {featuredServices.map((service, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-border-custom group flex flex-col h-auto w-[300px] shrink-0 relative"
+              >
+                {/* Image Section */}
+                <div className="relative w-full h-[240px] md:h-[280px] overflow-hidden pointer-events-none">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    sizes="300px"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/10" />
+                  <span className="absolute top-4 left-4 bg-white/95 px-3 py-1 font-sans text-[10px] font-bold tracking-widest uppercase text-rose-gold-dark border border-rose-gold/20">
+                    {service.category}
+                  </span>
+                </div>
 
-              {/* Details Section */}
-              <div className="p-6 md:p-8 flex flex-col flex-grow items-start text-left">
-                <h3 className="font-display text-xl md:text-2xl font-light text-charcoal mb-3 group-hover:text-rose-gold-dark transition-colors duration-300 pointer-events-none">
-                  {service.title}
-                </h3>
-                <p className="font-sans text-xs md:text-sm text-soft-gray leading-relaxed mb-8 flex-grow pointer-events-none">
-                  {service.description}
-                </p>
-                
-                {/* WhatsApp Direct Book Link */}
-                <a
-                  href={`https://wa.me/919324653663?text=${encodeURIComponent(service.waMessage)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-auto w-full border border-rose-gold text-charcoal hover:bg-rose-gold hover:text-charcoal transition-all duration-300 py-3.5 px-4 font-sans text-xs tracking-[0.25em] font-semibold uppercase flex items-center justify-center gap-2"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                  Book via WhatsApp
-                </a>
+                {/* Details Section */}
+                <div className="p-6 md:p-8 flex flex-col flex-grow items-start text-left">
+                  <h3 className="font-display text-xl md:text-2xl font-light text-charcoal mb-3 group-hover:text-rose-gold-dark transition-colors duration-300 pointer-events-none">
+                    {service.title}
+                  </h3>
+                  <p className="font-sans text-xs md:text-sm text-soft-gray leading-relaxed mb-8 flex-grow pointer-events-none">
+                    {service.description}
+                  </p>
+                  
+                  {/* WhatsApp Direct Book Link */}
+                  <a
+                    href={`https://wa.me/919324653663?text=${encodeURIComponent(service.waMessage)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-auto w-full border border-rose-gold text-charcoal hover:bg-rose-gold hover:text-charcoal transition-all duration-300 py-3.5 px-4 font-sans text-xs tracking-[0.25em] font-semibold uppercase flex items-center justify-center gap-2"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5 fill-current" />
+                    Book via WhatsApp
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </motion.div>
         </div>
 
-        {/* Carousel Dot Indicators (Paging navigation for both desktop & mobile) */}
-        <div className="flex justify-center gap-2.5 mt-4">
+        {/* Carousel Dot Indicators */}
+        <div className="flex justify-center gap-2.5 mt-8">
           {featuredServices.map((_, idx) => (
             <button
               key={idx}
-              onClick={() => {
-                if (scrollRef.current) {
-                  const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 300;
-                  const gap = 24;
-                  scrollRef.current.scrollTo({
-                    left: idx * (cardWidth + gap),
-                    behavior: "smooth"
-                  });
-                }
-              }}
+              onClick={() => setCurrentIndex(idx)}
               className={`h-1.5 transition-all duration-300 rounded-full ${
-                activeDot === idx ? "w-6 bg-rose-gold" : "w-1.5 bg-rose-gold/30"
+                currentIndex === idx ? "w-6 bg-rose-gold" : "w-1.5 bg-rose-gold/30"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
