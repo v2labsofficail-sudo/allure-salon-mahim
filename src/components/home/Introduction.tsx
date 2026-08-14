@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import Button from "../ui/Button";
 
 export default function Introduction() {
@@ -27,30 +26,25 @@ export default function Introduction() {
         {/* Right Side: Elegant Copy */}
         <div className="lg:col-span-6 flex flex-col items-start text-left">
           <span className="font-sans text-xs md:text-sm font-semibold tracking-[0.3em] text-rose-gold uppercase mb-4">
-            FOUNDERS &amp; ACADEMY
+            THE ALLURE EXPERIENCE
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light text-charcoal leading-tight mb-8">
-            15 Years of <br />
-            <span className="italic font-normal text-rose-gold-dark">Technical Mastery.</span>
+            Beauty, thoughtfully <br />
+            <span className="italic font-normal text-rose-gold-dark">elevated.</span>
           </h2>
           <p className="font-sans text-sm md:text-base text-soft-gray leading-relaxed mb-6 tracking-wide">
-            Founded by expert partners <strong>Rajeshree Mhetra</strong> and <strong>Sneha Gamare</strong>, Allure Salon is a sanctuary created exclusively for ladies. With over 15 years of professional experience in beauty, hair styling, advanced nail art, and makeup, they deliver bespoke care tailored to your unique style.
+            At Allure Salon Mahim, we believe beauty is a deeply personal expression. We reject the
+            one-size-fits-all approach, instead curating tailor-made experiences designed around
+            your individual desires, hair structure, and skin needs.
           </p>
           <p className="font-sans text-sm md:text-base text-soft-gray leading-relaxed mb-10 tracking-wide">
-            Empowering the beauty community, Rajeshree and Sneha also conduct professional training classes at the salon. Their structured, hands-on academy courses guide students from basic techniques to advanced certifications.
+            Our serene sanctuary in Mahim combines premium products with refined technical mastery,
+            creating a tranquil space where you can unwind while our specialists deliver meticulous
+            skincare, hair design, makeup, and wellness rituals.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Button href="/about" variant="outline">
-              DISCOVER MORE
-            </Button>
-            <Button
-              href={`https://wa.me/919324653663?text=${encodeURIComponent("Hi Allure Academy, I'd like to inquire about your professional training classes.")}`}
-              variant="solid"
-              className="bg-rose-gold hover:bg-rose-gold-dark text-charcoal hover:text-white"
-            >
-              INQUIRE CLASSES
-            </Button>
-          </div>
+          <Button href="/about" variant="outline">
+            DISCOVER ALLURE
+          </Button>
         </div>
       </div>
     </section>

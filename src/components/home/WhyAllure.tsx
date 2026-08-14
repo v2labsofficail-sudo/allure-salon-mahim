@@ -1,27 +1,27 @@
 import React from "react";
-import { Award, Sparkles, GraduationCap, Heart } from "lucide-react";
+import { Award, Sparkles, Shield, Compass } from "lucide-react";
 
 export default function WhyAllure() {
   const items = [
     {
       icon: Award,
-      title: "15+ YEARS EXPERIENCE",
-      description: "Led by expert partners Rajeshree & Sneha with 15 years of industry-leading mastery.",
-    },
-    {
-      icon: GraduationCap,
-      title: "ALLURE ACADEMY",
-      description: "Comprehensive professional hands-on classes in hair, beauty, nails, and makeup.",
-    },
-    {
-      icon: Heart,
-      title: "EXCLUSIVELY FOR LADIES",
-      description: "A private, peaceful, and comfortable beauty sanctuary designed around you.",
+      title: "EXPERTISE",
+      description: "Professional beauty specialists dedicated to detail.",
     },
     {
       icon: Sparkles,
-      title: "PREMIUM PRODUCTS",
-      description: "We use only high-end, dermatologist-tested brands for flawless results.",
+      title: "PERSONALised CARE",
+      description: "Services tailored around every client's individual needs.",
+    },
+    {
+      icon: Compass,
+      title: "PREMIUM EXPERIENCE",
+      description: "A refined salon environment designed around comfort.",
+    },
+    {
+      icon: Shield,
+      title: "ATTENTION TO DETAIL",
+      description: "Every service delivered with precision and care.",
     },
   ];
 
