@@ -16,8 +16,8 @@ export default function FinalCTA() {
           Ready for your <span className="italic font-normal text-rose-gold">Allure moment?</span>
         </h2>
         <p className="font-sans text-sm md:text-base text-rose-gold-light max-w-lg mb-10 leading-relaxed tracking-wide">
-          Book your next beauty, hair, makeup, or wellness experience with Allure Salon Mahim. Let
-          us elevate your natural confidence.
+          Book your next beauty, hair, makeup, or wellness experience with Allure Salon Mahim.
+          Enjoy 10% off on your first visit or when you refer a friend. Let us elevate your natural confidence.
         </p>
         <Button href="/contact" variant="solid" className="bg-rose-gold text-charcoal hover:bg-rose-gold-dark hover:text-white border-rose-gold hover:border-rose-gold-dark">
           BOOK AN APPOINTMENT
