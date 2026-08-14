@@ -84,13 +84,13 @@ export default function FeaturedServicesCarousel() {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden pb-6 cursor-grab active:cursor-grabbing"
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden pb-6 -mx-6 px-6 lg:mx-0 lg:px-0 cursor-grab active:cursor-grabbing"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {featuredServices.map((service, idx) => (
             <div
               key={idx}
-              className="bg-white border border-border-custom group flex flex-col h-auto w-[85vw] sm:w-[48vw] lg:w-[calc(33.333%-16px)] shrink-0 snap-center md:snap-start relative"
+              className="bg-white border border-border-custom group flex flex-col h-auto w-[80vw] sm:w-[45vw] lg:w-[calc(33.333%-16px)] shrink-0 snap-start relative"
             >
               {/* Image Section */}
               <div className="relative w-full h-[240px] md:h-[280px] overflow-hidden">
