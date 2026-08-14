@@ -10,7 +10,7 @@ import Button from "../ui/Button";
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; isExternal?: boolean }[];
 }
 
 export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {
