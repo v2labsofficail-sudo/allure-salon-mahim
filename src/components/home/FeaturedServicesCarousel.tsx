@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, MessageSquare } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface FeaturedService {
   title: string;
@@ -52,42 +51,31 @@ export default function FeaturedServicesCarousel() {
     }
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [cardsToShow, setCardsToShow] = useState(3);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeDot, setActiveDot] = useState(0);
 
-  // Responsive adjustments for number of cards visible at once
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setCardsToShow(1);
-      } else if (window.innerWidth < 1024) {
-        setCardsToShow(2);
-      } else {
-        setCardsToShow(3);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const maxIndex = featuredServices.length - cardsToShow;
-
-  const nextSlide = () => {
-    if (currentIndex < maxIndex) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      // Loop back to start
-      setCurrentIndex(0);
+  // Monitor scroll to update the active dot indicator
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const scrollLeft = scrollRef.current.scrollLeft;
+      const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 300;
+      const gap = 24; // gap-6 matches 24px in Tailwind
+      const index = Math.round(scrollLeft / (cardWidth + gap));
+      setActiveDot(index);
     }
   };
 
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-    } else {
-      // Loop to end
-      setCurrentIndex(maxIndex);
+  // Scroll handler for Next/Prev buttons
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 300;
+      const gap = 24;
+      const scrollAmount = direction === "left" ? -(cardWidth + gap) : (cardWidth + gap);
+      
+      scrollRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
     }
   };
 
@@ -95,7 +83,7 @@ export default function FeaturedServicesCarousel() {
     <section className="py-20 md:py-28 bg-cream/45 border-b border-border-custom/50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+        <div className="flex flex-row items-end justify-between mb-10 md:mb-16 gap-4">
           <div className="text-left">
             <span className="font-sans text-xs md:text-sm font-semibold tracking-[0.3em] text-rose-gold uppercase block mb-4">
               SIGNATURE TREATMENTS
@@ -104,17 +92,18 @@ export default function FeaturedServicesCarousel() {
               Our Featured <span className="italic font-normal text-rose-gold-dark">Specials.</span>
             </h2>
           </div>
-          {/* Controls */}
+          
+          {/* Desktop Arrow Controls */}
           <div className="flex items-center gap-3">
             <button
-              onClick={prevSlide}
+              onClick={() => scroll("left")}
               className="p-3 border border-border-custom text-charcoal hover:bg-rose-gold hover:text-charcoal hover:border-rose-gold transition-all duration-300 rounded-none bg-white"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5 stroke-[1.5]" />
             </button>
             <button
-              onClick={nextSlide}
+              onClick={() => scroll("right")}
               className="p-3 border border-border-custom text-charcoal hover:bg-rose-gold hover:text-charcoal hover:border-rose-gold transition-all duration-300 rounded-none bg-white"
               aria-label="Next slide"
             >
@@ -123,58 +112,78 @@ export default function FeaturedServicesCarousel() {
           </div>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-6 lg:gap-8"
-            animate={{ x: `-${currentIndex * (100 / cardsToShow + (cardsToShow === 3 ? 1.5 : cardsToShow === 2 ? 2 : 0))}%` }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            style={{ width: `${(featuredServices.length / cardsToShow) * 100}%` }}
-          >
-            {featuredServices.map((service, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-border-custom group flex flex-col h-full relative"
-                style={{ width: `${100 / featuredServices.length}%` }}
-              >
-                {/* Image Section */}
-                <div className="relative w-full h-[240px] md:h-[280px] overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-charcoal/10" />
-                  <span className="absolute top-4 left-4 bg-white/95 px-3 py-1 font-sans text-[10px] font-bold tracking-widest uppercase text-rose-gold-dark border border-rose-gold/20">
-                    {service.category}
-                  </span>
-                </div>
-
-                {/* Details Section */}
-                <div className="p-6 md:p-8 flex flex-col flex-grow items-start text-left">
-                  <h3 className="font-display text-xl md:text-2xl font-light text-charcoal mb-3 group-hover:text-rose-gold-dark transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="font-sans text-xs md:text-sm text-soft-gray leading-relaxed mb-8 flex-grow">
-                    {service.description}
-                  </p>
-                  
-                  {/* WhatsApp Direct Book Link */}
-                  <a
-                    href={`https://wa.me/919324653663?text=${encodeURIComponent(service.waMessage)}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-auto w-full border border-rose-gold text-charcoal hover:bg-rose-gold hover:text-charcoal transition-all duration-300 py-3.5 px-4 font-sans text-xs tracking-[0.25em] font-semibold uppercase flex items-center justify-center gap-2"
-                  >
-                    <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                    Book via WhatsApp
-                  </a>
-                </div>
+        {/* Carousel Container with Scroll Snap (Touch Enabled) */}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden pb-6"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {featuredServices.map((service, idx) => (
+            <div
+              key={idx}
+              className="bg-white border border-border-custom group flex flex-col h-auto w-[85vw] sm:w-[48vw] lg:w-[calc(33.333%-16px)] shrink-0 snap-center md:snap-start relative"
+            >
+              {/* Image Section */}
+              <div className="relative w-full h-[240px] md:h-[280px] overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-charcoal/10" />
+                <span className="absolute top-4 left-4 bg-white/95 px-3 py-1 font-sans text-[10px] font-bold tracking-widest uppercase text-rose-gold-dark border border-rose-gold/20">
+                  {service.category}
+                </span>
               </div>
-            ))}
-          </motion.div>
+
+              {/* Details Section */}
+              <div className="p-6 md:p-8 flex flex-col flex-grow items-start text-left">
+                <h3 className="font-display text-xl md:text-2xl font-light text-charcoal mb-3 group-hover:text-rose-gold-dark transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="font-sans text-xs md:text-sm text-soft-gray leading-relaxed mb-8 flex-grow">
+                  {service.description}
+                </p>
+                
+                {/* WhatsApp Direct Book Link */}
+                <a
+                  href={`https://wa.me/919324653663?text=${encodeURIComponent(service.waMessage)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-auto w-full border border-rose-gold text-charcoal hover:bg-rose-gold hover:text-charcoal transition-all duration-300 py-3.5 px-4 font-sans text-xs tracking-[0.25em] font-semibold uppercase flex items-center justify-center gap-2"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 fill-current" />
+                  Book via WhatsApp
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Carousel Dot Indicators (For Mobile/Tablet navigation feedback) */}
+        <div className="flex justify-center gap-2.5 mt-4">
+          {featuredServices.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                if (scrollRef.current) {
+                  const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 300;
+                  const gap = 24;
+                  scrollRef.current.scrollTo({
+                    left: idx * (cardWidth + gap),
+                    behavior: "smooth"
+                  });
+                }
+              }}
+              className={`h-1.5 transition-all duration-300 rounded-full ${
+                activeDot === idx ? "w-6 bg-rose-gold" : "w-1.5 bg-rose-gold/30"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
