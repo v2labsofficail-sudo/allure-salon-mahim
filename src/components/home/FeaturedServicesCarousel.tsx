@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, MessageSquare } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 
 interface FeaturedService {
   title: string;
@@ -65,20 +65,6 @@ export default function FeaturedServicesCarousel() {
     }
   };
 
-  // Scroll handler for Next/Prev buttons
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const cardWidth = scrollRef.current.firstElementChild?.clientWidth || 300;
-      const gap = 24;
-      const scrollAmount = direction === "left" ? -(cardWidth + gap) : (cardWidth + gap);
-      
-      scrollRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
     <section className="py-20 md:py-28 bg-cream/45 border-b border-border-custom/50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -92,31 +78,13 @@ export default function FeaturedServicesCarousel() {
               Our Featured <span className="italic font-normal text-rose-gold-dark">Specials.</span>
             </h2>
           </div>
-          
-          {/* Desktop Arrow Controls */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => scroll("left")}
-              className="p-3 border border-border-custom text-charcoal hover:bg-rose-gold hover:text-charcoal hover:border-rose-gold transition-all duration-300 rounded-none bg-white"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-5 h-5 stroke-[1.5]" />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="p-3 border border-border-custom text-charcoal hover:bg-rose-gold hover:text-charcoal hover:border-rose-gold transition-all duration-300 rounded-none bg-white"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-5 h-5 stroke-[1.5]" />
-            </button>
-          </div>
         </div>
 
-        {/* Carousel Container with Scroll Snap (Touch Enabled) */}
+        {/* Carousel Container with Scroll Snap (Touch/Swipe Enabled) */}
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden pb-6"
+          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden pb-6 cursor-grab active:cursor-grabbing"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {featuredServices.map((service, idx) => (
@@ -163,7 +131,7 @@ export default function FeaturedServicesCarousel() {
           ))}
         </div>
 
-        {/* Carousel Dot Indicators (For Mobile/Tablet navigation feedback) */}
+        {/* Carousel Dot Indicators (Paging navigation for both desktop & mobile) */}
         <div className="flex justify-center gap-2.5 mt-4">
           {featuredServices.map((_, idx) => (
             <button
