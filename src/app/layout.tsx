@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import WhatsAppButton from "../components/ui/WhatsAppButton";
+import { SITE_URL } from "@/utils/seo";
 
 const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
@@ -18,17 +19,42 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+    template: "%s | Allure Salon Mahim",
+  },
   description:
     "Experience refined, premium beauty and wellness services in Mahim, Mumbai. Bespoke hair cutting, color, advanced skincare, bridal makeup, and calming self-care rituals.",
+  alternates: {
+    canonical: "./",
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
     title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
     description:
       "Experience refined, premium beauty and wellness services in Mahim, Mumbai. Bespoke hair cutting, color, advanced skincare, bridal makeup, and calming self-care rituals.",
-    url: "https://alluresalonmahim.com",
+    url: "./",
     siteName: "Allure Salon Mahim",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+      },
+    ],
     type: "website",
     locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+    description:
+      "Experience refined, premium beauty and wellness services in Mahim, Mumbai. Bespoke hair cutting, color, advanced skincare, bridal makeup, and calming self-care rituals.",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -40,8 +66,11 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BeautySalon",
+    "@id": `${SITE_URL}/#salon`,
     "name": "Allure Salon Mahim",
-    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop",
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/logo.png`,
+    "image": `${SITE_URL}/og-image.jpg`,
     "description": "Premium beauty salon in Mahim, Mumbai offering luxury hair, beauty, makeup, and wellness services.",
     "address": {
       "@type": "PostalAddress",
@@ -90,3 +119,4 @@ export default function RootLayout({
     </html>
   );
 }
+

@@ -79,7 +79,7 @@ export default function Hero() {
           >
             <Image
               src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=1600&auto=format&fit=crop"
-              alt="Luxury Beauty and Hair styling"
+              alt="Luxury hair styling and beauty treatments at Allure Salon Mahim Mumbai"
               fill
               priority
               className="object-cover transition-transform duration-1000 hover:scale-105"

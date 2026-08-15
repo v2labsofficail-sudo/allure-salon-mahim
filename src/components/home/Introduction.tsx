@@ -15,7 +15,7 @@ export default function Introduction() {
           <div className="relative w-full h-full overflow-hidden">
             <Image
               src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop"
-              alt="Luxury Salon Interior"
+              alt="Allure Salon Mahim premium beauty parlour interior in Mumbai"
               fill
               className="object-cover transition-transform duration-1000 hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"

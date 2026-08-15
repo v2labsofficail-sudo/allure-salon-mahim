@@ -2,11 +2,21 @@ import React from "react";
 import Image from "next/image";
 import { salonValues } from "../../data/salonData";
 import Gallery from "../../components/ui/Gallery";
+import { SITE_URL } from "@/utils/seo";
 
 export const metadata = {
-  title: "About Allure Salon Mahim | Premium Beauty Salon",
+  title: "About Allure Salon Mahim | Premium Beauty Salon in Mumbai",
   description:
-    "Learn about Allure Salon Mahim, our philosophy of personalized beauty, our core values of quality, expertise, care, and our premium salon space in Mahim, Mumbai.",
+    "Learn about Allure Salon Mahim and our approach to personalised hair, beauty, makeup and wellness experiences in Mumbai.",
+  alternates: {
+    canonical: `${SITE_URL}/about`,
+  },
+  openGraph: {
+    title: "About Allure Salon Mahim | Premium Beauty Salon in Mumbai",
+    description:
+      "Learn about Allure Salon Mahim and our approach to personalised hair, beauty, makeup and wellness experiences in Mumbai.",
+    url: `${SITE_URL}/about`,
+  },
 };
 
 export default function AboutPage() {
@@ -25,7 +35,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 border border-rose-gold/25 translate-x-3 translate-y-3 pointer-events-none" />
           <Image
             src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop"
-            alt="Allure Salon Premium Space"
+            alt="Allure Salon Mahim premium beauty salon interior in Mumbai"
             fill
             className="object-cover"
             priority
@@ -96,7 +106,7 @@ export default function AboutPage() {
             <div className="relative w-full h-full overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=800&auto=format&fit=crop"
-                alt="Allure Academy Classes"
+                alt="Professional beauty training and hair styling academy classes at Allure Salon Mahim"
                 fill
                 className="object-cover transition-transform duration-1000 hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 35vw"

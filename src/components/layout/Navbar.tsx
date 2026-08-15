@@ -9,6 +9,8 @@ import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 import MobileMenu from "./MobileMenu";
 
+import { GOOGLE_REVIEW_URL } from "@/utils/seo";
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -46,7 +48,7 @@ export default function Navbar() {
     { label: "Offers", href: "/offers" },
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Review Us", href: "https://g.page/r/YOUR_GOOGLE_REVIEW_ID/review", isExternal: true },
+    { label: "Review Us", href: GOOGLE_REVIEW_URL, isExternal: true },
   ];
 
   return (

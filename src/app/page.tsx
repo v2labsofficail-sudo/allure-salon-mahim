@@ -6,6 +6,23 @@ import FeaturedServicesCarousel from "../components/home/FeaturedServicesCarouse
 import WhyAllure from "../components/home/WhyAllure";
 import FeatureSection from "../components/home/FeatureSection";
 import FinalCTA from "../components/home/FinalCTA";
+import { Metadata } from "next";
+import { SITE_URL } from "@/utils/seo";
+
+export const metadata: Metadata = {
+  title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+  description:
+    "Discover Allure Salon Mahim for premium hair, beauty, makeup and wellness services in Mumbai. Explore our services and book your next beauty appointment.",
+  alternates: {
+    canonical: `${SITE_URL}/`,
+  },
+  openGraph: {
+    title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+    description:
+      "Discover Allure Salon Mahim for premium hair, beauty, makeup and wellness services in Mumbai. Explore our services and book your next beauty appointment.",
+    url: `${SITE_URL}/`,
+  },
+};
 
 export default function Home() {
   return (
@@ -20,3 +37,4 @@ export default function Home() {
     </div>
   );
 }
+
