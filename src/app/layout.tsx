@@ -21,8 +21,8 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
-    template: "%s | Allure Salon Mahim",
+    default: "Allure beauty and hair salon (only for ladies) | Hair, Beauty, Makeup & Wellness",
+    template: "%s | Allure beauty and hair salon (only for ladies)",
   },
   description:
     "Experience refined, premium beauty and wellness services in Mahim, Mumbai. Bespoke hair cutting, color, advanced skincare, bridal makeup, and calming self-care rituals.",
@@ -33,17 +33,17 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   },
   openGraph: {
-    title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+    title: "Allure beauty and hair salon (only for ladies) | Hair, Beauty, Makeup & Wellness",
     description:
       "Experience refined, premium beauty and wellness services in Mahim, Mumbai. Bespoke hair cutting, color, advanced skincare, bridal makeup, and calming self-care rituals.",
     url: "./",
-    siteName: "Allure Salon Mahim",
+    siteName: "Allure beauty and hair salon (only for ladies)",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+        alt: "Allure beauty and hair salon (only for ladies) | Hair, Beauty, Makeup & Wellness",
       },
     ],
     type: "website",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+    title: "Allure beauty and hair salon (only for ladies) | Hair, Beauty, Makeup & Wellness",
     description:
       "Experience refined, premium beauty and wellness services in Mahim, Mumbai. Bespoke hair cutting, color, advanced skincare, bridal makeup, and calming self-care rituals.",
     images: ["/og-image.jpg"],
@@ -67,14 +67,14 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "BeautySalon",
     "@id": `${SITE_URL}/#salon`,
-    "name": "Allure Salon Mahim",
+    "name": "Allure beauty and hair salon (only for ladies)",
     "url": SITE_URL,
     "logo": `${SITE_URL}/logo.png`,
     "image": `${SITE_URL}/og-image.jpg`,
     "description": "Premium beauty salon in Mahim, Mumbai offering luxury hair, beauty, makeup, and wellness services.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Shop No.3, Ground Floor, Sea Breez Society, Behind Mahim Church, Mori Road, Mahim (W)",
+      "streetAddress": "Mori Rd, Mahim West, Mahim",
       "addressLocality": "Mumbai",
       "addressRegion": "Maharashtra",
       "postalCode": "400016",

@@ -46,10 +46,10 @@ export default function Footer() {
             Get in Touch
           </h3>
           <p className="font-sans text-sm text-soft-gray leading-relaxed">
-            Shop No.3, Ground Floor, Sea Breez Society,<br />
-            Behind Mahim Church, Mori Road, Mahim (W),<br />
-            Mumbai - 400 016 <br />
-            Phone: <a href="tel:+919324653663" className="hover:text-rose-gold transition-colors font-medium">+91 93246 53663</a> <br />
+            Mori Rd, Mahim West,<br />
+            Mahim, Mumbai,<br />
+            Maharashtra 400016 <br />
+            Phone: <a href="tel:+919324653663" className="hover:text-rose-gold transition-colors font-medium">093246 53663</a> <br />
             Hours: Tue - Sun (10:30 AM - 9:00 PM) <br />
             Monday Closed
           </p>
@@ -98,7 +98,7 @@ export default function Footer() {
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-rose-gold/45 to-transparent my-8" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-sans text-xs text-soft-gray tracking-widest uppercase">
-            &copy; 2026 Allure Salon Mahim. All rights reserved.
+            &copy; 2026 Allure beauty and hair salon (only for ladies). All rights reserved.
           </p>
           <p className="font-sans text-[10px] text-soft-gray tracking-[0.2em] uppercase">
             Created by{" "}

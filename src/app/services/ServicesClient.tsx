@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,11 +10,13 @@ import Button from "../../components/ui/Button";
 
 function ServicesPageContent() {
   const searchParams = useSearchParams();
+  const [prevParams, setPrevParams] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
-  // Pre-select category based on URL query param (e.g. /services?category=beauty)
-  useEffect(() => {
+  const currentParamsStr = searchParams ? searchParams.toString() : "";
+  if (currentParamsStr !== prevParams) {
+    setPrevParams(currentParamsStr);
     const categoryParam = searchParams.get("category") || searchParams.get("service");
     if (categoryParam) {
       const index = salonServices.findIndex(
@@ -24,7 +26,7 @@ function ServicesPageContent() {
         setActiveIndex(index);
       }
     }
-  }, [searchParams]);
+  }
 
   const handleTabChange = (newIndex: number) => {
     setDirection(newIndex > activeIndex ? 1 : -1);

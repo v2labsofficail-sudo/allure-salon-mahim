@@ -56,9 +56,9 @@ export default function ContactClient() {
                     Location
                   </h3>
                   <p className="font-sans text-sm text-soft-gray leading-relaxed">
-                    Shop No.3, Ground Floor, Sea Breez Society,<br />
-                    Behind Mahim Church, Mori Road,<br />
-                    Mahim (W), Mumbai - 400 016
+                    Mori Rd, Mahim West,<br />
+                    Mahim, Mumbai,<br />
+                    Maharashtra 400016
                   </p>
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function ContactClient() {
             <div className="w-full h-[350px] relative overflow-hidden border border-border-custom/50">
               <iframe
                 title="Allure Salon Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.8213693245465!2d72.84136921434316!3d19.027538587116744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ced2ec7ee6d3%3A0x7d01869e5d4de75d!2sSt.%20Michael&#39;s%20Church!5e0!3m2!1sen!2sin!4v1723630000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.745426027732!2d72.84058607597143!3d19.03194098711394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9eca59f2a25%3A0x35d8635d83f8be03!2sAllure%20beauty%20and%20hair%20salon%20(only%20for%20ladies)!5e0!3m2!1sen!2sin!4v1723630000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageSquare } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, PanInfo } from "framer-motion";
 
 interface FeaturedService {
   title: string;
@@ -62,7 +61,7 @@ export default function FeaturedServicesCarousel() {
   // We set a fixed responsive card width plus gap (300px card + 24px gap = 324px step width)
   const stepWidth = 324;
 
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (event: unknown, info: PanInfo) => {
     const swipeThreshold = 50;
     const swipeOffset = info.offset.x;
 

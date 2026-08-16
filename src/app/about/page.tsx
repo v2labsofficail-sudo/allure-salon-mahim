@@ -5,16 +5,16 @@ import Gallery from "../../components/ui/Gallery";
 import { SITE_URL } from "@/utils/seo";
 
 export const metadata = {
-  title: "About Allure Salon Mahim | Premium Beauty Salon in Mumbai",
+  title: "About Us | Allure beauty and hair salon (only for ladies)",
   description:
-    "Learn about Allure Salon Mahim and our approach to personalised hair, beauty, makeup and wellness experiences in Mumbai.",
+    "Learn about Allure beauty and hair salon (only for ladies) and our approach to personalised hair, beauty, makeup and wellness experiences in Mumbai.",
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
-    title: "About Allure Salon Mahim | Premium Beauty Salon in Mumbai",
+    title: "About Us | Allure beauty and hair salon (only for ladies)",
     description:
-      "Learn about Allure Salon Mahim and our approach to personalised hair, beauty, makeup and wellness experiences in Mumbai.",
+      "Learn about Allure beauty and hair salon (only for ladies) and our approach to personalised hair, beauty, makeup and wellness experiences in Mumbai.",
     url: `${SITE_URL}/about`,
   },
 };
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </h2>
         <div className="flex flex-col gap-6 font-sans text-sm md:text-base text-soft-gray leading-relaxed tracking-wide text-justify md:text-center">
           <p>
-            Allure Salon Mahim is founded by partners <strong>Rajeshree Mhetra</strong> and <strong>Sneha Gamare</strong>, who bring over <strong>15 years of professional experience</strong> in the beauty industry. Having mastered the arts of hair styling, advanced skincare, luxury nail design, and editorial makeup, they envisioned a sanctuary exclusively for ladies where beauty is not standardized, but personalized around you.
+            Allure beauty and hair salon (only for ladies) is founded by partners <strong>Rajeshree Mhetra</strong> and <strong>Sneha Gamare</strong>, who bring over <strong>15 years of professional experience</strong> in the beauty industry. Having mastered the arts of hair styling, advanced skincare, luxury nail design, and editorial makeup, they envisioned a sanctuary exclusively for ladies where beauty is not standardized, but personalized around you.
           </p>
           <p>
             Our mission is to deliver custom beauty solutions that feel like a natural extension of who you are. We take pride in our commitment to quality, utilising premium formulations and modern techniques in a tranquil environment. Rajeshree and Sneha lead a team of handpicked beauty specialists who bring expert knowledge, professional care, and meticulous attention to detail to every single service.

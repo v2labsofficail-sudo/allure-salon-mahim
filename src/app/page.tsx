@@ -10,16 +10,16 @@ import { Metadata } from "next";
 import { SITE_URL } from "@/utils/seo";
 
 export const metadata: Metadata = {
-  title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+  title: "Allure beauty and hair salon (only for ladies) | Hair, Beauty, Makeup & Wellness",
   description:
-    "Discover Allure Salon Mahim for premium hair, beauty, makeup and wellness services in Mumbai. Explore our services and book your next beauty appointment.",
+    "Discover Allure beauty and hair salon (only for ladies) for premium hair, beauty, makeup and wellness services in Mumbai. Explore our services and book your next beauty appointment.",
   alternates: {
     canonical: `${SITE_URL}/`,
   },
   openGraph: {
-    title: "Allure Salon Mahim | Hair, Beauty, Makeup & Wellness",
+    title: "Allure beauty and hair salon (only for ladies) | Hair, Beauty, Makeup & Wellness",
     description:
-      "Discover Allure Salon Mahim for premium hair, beauty, makeup and wellness services in Mumbai. Explore our services and book your next beauty appointment.",
+      "Discover Allure beauty and hair salon (only for ladies) for premium hair, beauty, makeup and wellness services in Mumbai. Explore our services and book your next beauty appointment.",
     url: `${SITE_URL}/`,
   },
 };

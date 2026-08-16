@@ -59,7 +59,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         q: "Where is Allure Salon located in Mahim?",
-        a: "We are located at Shop No. 3, Ground Floor, Sea Breez Society, behind the historic Mahim Church on Mori Road, Mahim West, Mumbai."
+        a: "We are located at Mori Rd, Mahim West, Mahim, Mumbai, Maharashtra 400016."
       }
     ]
   },

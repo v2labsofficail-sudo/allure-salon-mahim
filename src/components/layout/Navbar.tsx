@@ -62,10 +62,10 @@ export default function Navbar() {
         <div className="w-full bg-charcoal text-rose-gold-light py-2 text-[9px] md:text-[10px] tracking-[0.25em] font-medium font-sans uppercase overflow-hidden border-b border-rose-gold/15 select-none">
           <div className="relative flex overflow-x-hidden">
             <div className="animate-marquee whitespace-nowrap flex gap-12">
-              <span>10% OFF First Visit &bull; Refer a Friend: 10% Discount &bull; Ladies Only Salon &bull; Allure Salon Mahim &bull; Tuesday to Sunday (10:30 AM - 9:00 PM) &bull; Monday Closed &bull; Book on WhatsApp &bull;</span>
-              <span>10% OFF First Visit &bull; Refer a Friend: 10% Discount &bull; Ladies Only Salon &bull; Allure Salon Mahim &bull; Tuesday to Sunday (10:30 AM - 9:00 PM) &bull; Monday Closed &bull; Book on WhatsApp &bull;</span>
-              <span>10% OFF First Visit &bull; Refer a Friend: 10% Discount &bull; Ladies Only Salon &bull; Allure Salon Mahim &bull; Tuesday to Sunday (10:30 AM - 9:00 PM) &bull; Monday Closed &bull; Book on WhatsApp &bull;</span>
-              <span>10% OFF First Visit &bull; Refer a Friend: 10% Discount &bull; Ladies Only Salon &bull; Allure Salon Mahim &bull; Tuesday to Sunday (10:30 AM - 9:00 PM) &bull; Monday Closed &bull; Book on WhatsApp &bull;</span>
+              <span>10% OFF First Visit &bull; Refer a Friend: 10% Discount &bull; Ladies Only Salon &bull; Allure beauty and hair salon (only for ladies) &bull; Tuesday to Sunday (10:30 AM - 9:00 PM) &bull; Monday Closed &bull; Book on WhatsApp &bull;</span>
+              <span>10% OFF First Visit &bull; Refer a Friend: 10% Discount &bull; Ladies Only Salon &bull; Allure beauty and hair salon (only for ladies) &bull; Tuesday to Sunday (10:30 AM - 9:00 PM) &bull; Monday Closed &bull; Book on WhatsApp &bull;</span>
+              <span>10% OFF First Visit &bull; Refer a Friend: 10% Discount &bull; Ladies Only Salon &bull; Allure beauty and hair salon (only for ladies) &bull; Tuesday to Sunday (10:30 AM - 9:00 PM) &bull; Monday Closed &bull; Book on WhatsApp &bull;</span>
+              <span>10% OFF First Visit &bull; Refer a Friend: 10% Discount &bull; Ladies Only Salon &bull; Allure beauty and hair salon (only for ladies) &bull; Tuesday to Sunday (10:30 AM - 9:00 PM) &bull; Monday Closed &bull; Book on WhatsApp &bull;</span>
             </div>
           </div>
         </div>
