@@ -35,7 +35,7 @@ export const salonServices: ServiceCategory[] = [
     id: "hair",
     title: "HAIR SERVICES",
     subtitle: "Artistry in styling and hair care.",
-    description: "Our master stylists create bespoke cuts, vibrant styles, and nourishing treatments designed to accentuate your natural features and restore hair health.",
+    description: "Our master stylists create bespoke <a href=\"/services/haircut\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">cuts</a>, vibrant styles, and nourishing treatments designed to accentuate your natural features. We specialize in global <a href=\"/services/hair-colour\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">hair colour</a>, <a href=\"/services/balayage\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">balayage</a>, <a href=\"/services/highlights\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">highlights</a>, <a href=\"/services/keratin-treatment\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">keratin</a>, hair <a href=\"/services/hair-botox\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">botox</a>, <a href=\"/services/cysteine-treatment\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">cysteine</a>, and nourishing <a href=\"/services/hair-spa\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">hair spa</a> treatments in Mahim West, Mumbai.",
     image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1200&auto=format&fit=crop",
     images: [
       "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop",
@@ -75,7 +75,7 @@ export const salonServices: ServiceCategory[] = [
     id: "beauty",
     title: "BEAUTY & SKINCARE",
     subtitle: "Radiant skincare and facial treatments.",
-    description: "Rejuvenate your skin and body with our curated beauty rituals. From targeted professional facials to luxury nail therapies.",
+    description: "Rejuvenate your skin and body with our curated beauty rituals. Discover our advanced skin treatments including specialized <a href=\"/services/hydrafacial\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">Hydrafacials</a>, professional <a href=\"/services/facial\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">facials</a>, and brightening <a href=\"/services/d-tan\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">D-Tan</a> therapies in Mahim West, Mumbai.",
     image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1200&auto=format&fit=crop",
     images: [
       "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800&auto=format&fit=crop",
@@ -131,7 +131,7 @@ export const salonServices: ServiceCategory[] = [
     id: "makeup",
     title: "MAKEUP",
     subtitle: "Glamour defined by elegance.",
-    description: "From editorial-grade bridal makeup to high-impact event looks, our makeup artists specialize in flawless, long-wear applications.",
+    description: "From editorial-grade <a href=\"/services/bridal-makeup\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">bridal makeup</a> to high-impact <a href=\"/services/event-makeup\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">event makeup</a> looks, our makeup artists specialize in flawless, long-wear applications in Mahim West, Mumbai.",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200&auto=format&fit=crop",
     images: [
       "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop",

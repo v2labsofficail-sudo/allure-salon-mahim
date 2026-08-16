@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -11,6 +12,7 @@ interface FeaturedService {
   description: string;
   image: string;
   waMessage: string;
+  serviceSlug?: string;
 }
 
 export default function FeaturedServicesCarousel() {
@@ -20,21 +22,24 @@ export default function FeaturedServicesCarousel() {
       category: "HAIR TREATMENT",
       description: "Advanced restorative treatments that eliminate frizz, rebuild structural strength, and deliver mirror-like shine.",
       image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?q=80&w=800&auto=format&fit=crop",
-      waMessage: "Hi Allure Salon, I'd like to book a consultation for the Hair Botox & Keratin Treatment."
+      waMessage: "Hi Allure Salon, I'd like to book a consultation for the Hair Botox & Keratin Treatment.",
+      serviceSlug: "hair-botox"
     },
     {
       title: "Luxury Facials (O3 & Serenite)",
       category: "SKINCARE RITUALS",
       description: "Deeply nourishing facial treatments tailored to restore moisture, treat skin concerns, and reveal a radiant glow.",
       image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop",
-      waMessage: "Hi Allure Salon, I'd like to book a Luxury Facial (O3 / Serenite) session."
+      waMessage: "Hi Allure Salon, I'd like to book a Luxury Facial (O3 / Serenite) session.",
+      serviceSlug: "facial"
     },
     {
       title: "Bridal Makeup & Hairstyles",
       category: "BRIDAL & EDITORIAL",
       description: "Exquisite, long-lasting bridal makeovers and customized hairstyles crafted to make your wedding day unforgettable.",
       image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
-      waMessage: "Hi Allure Salon, I'd like to book or inquire about your Bridal Makeup and Hairstyling packages."
+      waMessage: "Hi Allure Salon, I'd like to book or inquire about your Bridal Makeup and Hairstyling packages.",
+      serviceSlug: "bridal-makeup"
     },
     {
       title: "Spa Manicure & Pedicure",
@@ -122,9 +127,19 @@ export default function FeaturedServicesCarousel() {
 
                 {/* Details Section */}
                 <div className="p-6 md:p-8 flex flex-col flex-grow items-start text-left">
-                  <h3 className="font-display text-xl md:text-2xl font-light text-charcoal mb-3 group-hover:text-rose-gold-dark transition-colors duration-300 pointer-events-none">
-                    {service.title}
-                  </h3>
+                  {service.serviceSlug ? (
+                    <Link href={`/services/${service.serviceSlug}`} className="group/title">
+                      <h3 className="font-display text-xl md:text-2xl font-light text-charcoal mb-3 group-hover/title:text-rose-gold-dark transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                    </Link>
+                  ) : (
+                    <Link href="/services" className="group/title">
+                      <h3 className="font-display text-xl md:text-2xl font-light text-charcoal mb-3 group-hover/title:text-rose-gold-dark transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                    </Link>
+                  )}
                   <p className="font-sans text-xs md:text-sm text-soft-gray leading-relaxed mb-8 flex-grow pointer-events-none">
                     {service.description}
                   </p>

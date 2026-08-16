@@ -194,9 +194,10 @@ function ServicesPageContent() {
               <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-light text-charcoal uppercase mb-4 tracking-wider">
                 {activeCategory.title}
               </h2>
-              <p className="font-sans text-sm md:text-base text-soft-gray leading-relaxed mb-8 tracking-wide">
-                {activeCategory.description}
-              </p>
+              <p 
+                className="font-sans text-sm md:text-base text-soft-gray leading-relaxed mb-8 tracking-wide"
+                dangerouslySetInnerHTML={{ __html: activeCategory.description }}
+              />
 
               {/* Service Menu Items */}
               <div className="w-full flex flex-col gap-2 mb-10">
