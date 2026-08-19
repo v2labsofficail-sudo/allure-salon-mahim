@@ -157,7 +157,7 @@ export const salonServices: ServiceCategory[] = [
     id: "wellness",
     title: "WELLNESS",
     subtitle: "Nourish your mind, body and soul.",
-    description: "Unplug and restore your inner balance with our therapeutic wellness rituals, designed to relieve stress and revitalize your energy.",
+    description: "Unplug and restore your inner balance with our therapeutic wellness rituals. Experience the ultimate relaxation with professional <a href=\"/services#wellness\" class=\"text-rose-gold hover:text-rose-gold-dark font-semibold underline\">spa treatments</a> and body massages at Allure Salon in Mahim West, Mumbai.",
     image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200&auto=format&fit=crop",
     images: [
       "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop",

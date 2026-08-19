@@ -38,9 +38,10 @@ export default function ServiceCard({
           <h3 className="font-display text-xl tracking-[0.1em] text-charcoal uppercase mb-3">
             {title}
           </h3>
-          <p className="font-sans text-xs text-soft-gray mb-6 leading-relaxed">
-            {description}
-          </p>
+          <p 
+            className="font-sans text-xs text-soft-gray mb-6 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
 
           <ul className="flex flex-col gap-2.5 mb-8 border-t border-border-custom/50 pt-4">
             {previewList.map((item, idx) => (
